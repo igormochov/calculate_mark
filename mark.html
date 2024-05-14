@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расчет оценки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Расчет оценки</h1>
+    </header>
+    <div class="container">
+        <form id="gradeCalculator">
+            <label for="workDone">Процент выполненной работы:</label>
+            <input type="number" id="workDone" name="workDone" min="0" max="100" placeholder="Введите процент от 0 до 100" required>
+            <button type="submit">Рассчитать</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById("gradeCalculator").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var workDone = parseInt(document.getElementById("workDone").value);
+            var resultElement = document.getElementById("result");
+            var grade;
+
+            if (workDone < 50) {
+                grade = 2;
+            } else if (workDone >= 50 && workDone < 70) {
+                grade = 3;
+            } else if (workDone >= 70 && workDone < 90) {
+                grade = 4;
+            } else {
+                grade = 5;
+            }
+
+            resultElement.innerHTML = "<p>Оценка: " + grade + "</p>";
+        });
+    </script>
+</body>
+</html>
